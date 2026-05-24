@@ -4,7 +4,7 @@ This repository contains the code used to fit the proposed adaptive convex clust
 
 ## Method
 
-Given a data matrix $X \in \mathbb{R}^{n \times p}$, the proposed method jointly learns a prototype matrix $U$ and an adaptive proximity matrix $Z$.
+Given a data matrix $\mathbf{X} \in \mathbb{R}^{n \times p}$, the proposed method jointly learns a prototype matrix $U$ and an adaptive proximity matrix $Z$.
 
 <p align="center">
   <img src="method.png" alt="Optimization problem" width="900">
