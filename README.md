@@ -169,7 +169,3 @@ The other baseline methods are evaluated over the following settings:
 number of prototypes k = 2, ..., 50
 random seeds = 1001, ..., 1020
 ```
-
-## Notes
-
-This repository provides fitting scripts for reproducing the experimental results. Plotting and post-processing scripts are not included in this minimal reproducibility package.
