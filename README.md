@@ -34,17 +34,70 @@ The file `supplementary_material.pdf` contains additional algorithmic details an
 
 ## Scripts
 
+All scripts should be run from the repository root directory.
+
 ### `install.R`
 
 Installs the R packages required for fitting the proposed method and the baseline methods.
 
-### `admm.R`
+```bash
+Rscript install.R
+```
 
-Implements the ADMM solver for the proposed optimization problem.
+### `simulation/moon.R`
+
+Generates the two-moon synthetic dataset.
+
+```bash
+Rscript simulation/moon.R
+```
+
+The generated files are
+
+```text
+simulation/moon.Rds
+simulation/moon_true.Rds
+```
+
+### `simulation/ring.R`
+
+Generates the 3D ring synthetic dataset.
+
+```bash
+Rscript simulation/ring.R
+```
+
+The generated files are
+
+```text
+simulation/ring.Rds
+simulation/ring_true.Rds
+```
+
+### `simulation/spiral.R`
+
+Generates the 3D spiral synthetic dataset.
+
+```bash
+Rscript simulation/spiral.R
+```
+
+The generated files are
+
+```text
+simulation/spiral.Rds
+simulation/spiral_true.Rds
+```
 
 ### `run_ours.R`
 
-Runs the proposed method on the real datasets stored in `realdata/`. The results are saved under
+Runs the proposed method on the real datasets stored in `realdata/`.
+
+```bash
+Rscript run_ours.R
+```
+
+The results are saved under
 
 ```text
 realdata/results_ours/
@@ -52,7 +105,13 @@ realdata/results_ours/
 
 ### `run_cvscls.R`
 
-Runs the standard convex clustering baseline using the `cvxclustr` package. The results are saved under
+Runs the standard convex clustering baseline using the `cvxclustr` package.
+
+```bash
+Rscript run_cvscls.R
+```
+
+The results are saved under
 
 ```text
 realdata/results_baseline/
@@ -67,38 +126,19 @@ Runs the following prototype-based baseline methods:
 - self-organizing map
 - neural gas
 
+```bash
+Rscript run_baselines.R
+```
+
 The results are saved under
 
 ```text
 realdata/results_baseline/
 ```
 
-### `simulation/moon.R`
+### `admm.R`
 
-Generates the two-moon synthetic dataset. The generated files are
-
-```text
-simulation/moon.Rds
-simulation/moon_true.Rds
-```
-
-### `simulation/ring.R`
-
-Generates the 3D ring synthetic dataset. The generated files are
-
-```text
-simulation/ring.Rds
-simulation/ring_true.Rds
-```
-
-### `simulation/spiral.R`
-
-Generates the 3D spiral synthetic dataset. The generated files are
-
-```text
-simulation/spiral.Rds
-simulation/spiral_true.Rds
-```
+Implements the ADMM solver for the proposed optimization problem. This file is sourced by `run_ours.R` and does not need to be run directly.
 
 ## Data Format
 
@@ -114,42 +154,6 @@ iris_test_true.Rds
 ```
 
 The data files contain numeric matrices, and the label files contain class labels.
-
-## Running the Code
-
-All scripts are intended to be run from the repository root directory.
-
-Install required packages:
-
-```bash
-Rscript install.R
-```
-
-Generate synthetic datasets:
-
-```bash
-Rscript simulation/moon.R
-Rscript simulation/ring.R
-Rscript simulation/spiral.R
-```
-
-Run the proposed method:
-
-```bash
-Rscript run_ours.R
-```
-
-Run the convex clustering baseline:
-
-```bash
-Rscript run_cvscls.R
-```
-
-Run the remaining baseline methods:
-
-```bash
-Rscript run_baselines.R
-```
 
 ## Main Parameters
 
