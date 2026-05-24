@@ -46,8 +46,8 @@ for (dataset in dataset_names) {
 n_size <- sapply(data_list, nrow)
 data_list <- data_list[order(n_size)]
 
-knn_grid <- 10
-gamma_grid <- unique(round(exp(seq(log(0.01), log(20000), length.out = 1000)), 4))
+knn_grid <- c(5, 10, 20)
+gamma_grid <- round(exp(seq(log(10), log(10000), length.out = 60)), 0)
 
 result_dir <- file.path(root_dir, "results_baseline")
 dir.create(result_dir, showWarnings = FALSE, recursive = TRUE)
