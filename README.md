@@ -6,7 +6,7 @@ This repository contains the code used to fit the proposed adaptive convex clust
 
 Given a data matrix $\mathbf{X} \in \mathbb{R}^{n \times p}$, the proposed method jointly learns a prototype matrix $ \mathbf{U} $ and an adaptive proximity matrix $ \mathbf{Z} $. The optimization problem is
 
-$$
+$
 \begin{aligned}
 \min_{\mathbf{U},\mathbf{Z}} \quad &
 \frac{1}{2}\|\mathbf{X}-\mathbf{U}\|_F^2
@@ -24,7 +24,7 @@ Z_{ij}^2\|\mathbf{U}_{i\cdot}-\mathbf{U}_{j\cdot}\|_2^2
 \mathbf{Z}=\mathbf{Z}^{\top}, \quad
 \mathbf{Z}\mathbf{1}=\mathbf{1}.
 \end{aligned}
-$$
+$
 
 Here, $\lambda,\gamma>0$, $\mathbf{U}_{i\cdot}$ denotes the $i$-th row of $\mathbf{U}$, and $\mathbf{Z}_{ij}$ denotes the $(i,j)$-th element of $\mathbf{Z}$. The unique rows of $\mathbf{U}$ are used as learned prototypes.
 
