@@ -1,4 +1,4 @@
-# Reproducibility Code
+# Beyond Local Centers toward Prototypes: Joint Learning of Self-Representation and Adaptive Clusterin
 
 This repository contains the code used to fit the proposed adaptive convex clustering model and the baseline prototype-based methods used in the experiments.
 
@@ -16,6 +16,9 @@ Here, $\lambda,\gamma > 0$, $U_{i\cdot}$ denotes the $i$-th row of $U$, and $Z_{
 
 ```text
 .
+├── README.md
+├── supplementary_material.pdf
+├── method.png
 ├── admm.R
 ├── install.R
 ├── run_ours.R
@@ -24,6 +27,10 @@ Here, $\lambda,\gamma > 0$, $U_{i\cdot}$ denotes the $i$-th row of $U$, and $Z_{
 ├── realdata/
 └── simulation/
 ```
+
+## Supplementary Material
+
+The file `supplementary_material.pdf` contains additional algorithmic details and experimental results that are not included in the main paper.
 
 ## Scripts
 
