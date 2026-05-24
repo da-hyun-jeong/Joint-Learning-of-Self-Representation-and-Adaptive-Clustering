@@ -1,4 +1,4 @@
-# Beyond Local Centers toward Prototypes: Joint Learning of Self-Representation and Adaptive Clusterin
+# Beyond Local Centers toward Prototypes: Joint Learning of Self-Representation and Adaptive Clustering
 
 This repository contains the code used to fit the proposed adaptive convex clustering model and the baseline prototype-based methods used in the experiments.
 
