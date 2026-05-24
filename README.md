@@ -4,29 +4,29 @@ This repository contains the code used to fit the proposed adaptive convex clust
 
 ## Method
 
-Given a data matrix $\mathbf{X} \in \mathbb{R}^{n \times p}$, the proposed method jointly learns a prototype matrix $ \mathbf{U} $ and an adaptive proximity matrix $ \mathbf{Z} $. The optimization problem is
+Given a data matrix $\mathbf{X}\in\mathbb{R}^{n\times p}$, the proposed method jointly learns a prototype matrix $\mathbf{U}$ and an adaptive proximity matrix $\mathbf{Z}$. The optimization problem is
 
-$$
+```math
 \begin{aligned}
-\min_{\mathbf{U},\mathbf{Z}} \quad &
-\frac{1}{2}\|\mathbf{X}-\mathbf{U}\|_F^2
-+ \gamma \|\mathbf{Z}\|_F^2 \\
-&\quad + \lambda \sum_{i<j}
+\min_{\mathbf{U},\mathbf{Z}} \quad
+& \frac{1}{2}\|\mathbf{X}-\mathbf{U}\|_F^2
++ \gamma\|\mathbf{Z}\|_F^2 \\
+& + \lambda \sum_{i<j}
 \left(
 Z_{ij}\|\mathbf{U}_{i\cdot}-\mathbf{U}_{j\cdot}\|_2
 +
 Z_{ij}^2\|\mathbf{U}_{i\cdot}-\mathbf{U}_{j\cdot}\|_2^2
 \right) \\
-\text{subject to} \quad &
-\mathbf{Z}\mathbf{U}=\mathbf{U}, \quad
-\mathrm{diag}(\mathbf{Z})=0, \quad
-\mathbf{Z}\geq \mathbf{0}, \quad
+\text{subject to} \quad
+& \mathbf{Z}\mathbf{U}=\mathbf{U}, \quad
+\mathrm{diag}(\mathbf{Z})=\mathbf{0}, \quad
+\mathbf{Z}\geq\mathbf{0}, \quad
 \mathbf{Z}=\mathbf{Z}^{\top}, \quad
 \mathbf{Z}\mathbf{1}=\mathbf{1}.
 \end{aligned}
-$$
+```
 
-Here, $\lambda,\gamma>0$, $\mathbf{U}_{i\cdot}$ denotes the $i$-th row of $\mathbf{U}$, and $\mathbf{Z}_{ij}$ denotes the $(i,j)$-th element of $\mathbf{Z}$. The unique rows of $\mathbf{U}$ are used as learned prototypes.
+Here, $\lambda,\gamma>0$, $\mathbf{U}_{i\cdot}$ denotes the $i$-th row of $\mathbf{U}$, and $Z_{ij}$ denotes the $(i,j)$-th element of $\mathbf{Z}$. The unique rows of $\mathbf{U}$ are used as learned prototypes.
 
 ## Repository Structure
 
