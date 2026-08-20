@@ -1,4 +1,4 @@
-packages <- c(
+packages = c(
   "cvxclustr",
   "cluster",
   "kohonen",
@@ -7,8 +7,8 @@ packages <- c(
   "doParallel"
 )
 
-installed <- rownames(installed.packages())
-missing <- setdiff(packages, installed)
+installed = rownames(installed.packages())
+missing = setdiff(packages, installed)
 
 if (length(missing) > 0) {
   install.packages(
