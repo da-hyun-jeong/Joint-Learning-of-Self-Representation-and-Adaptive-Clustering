@@ -26,17 +26,13 @@ for (df_f in df_fs) {
   n = nrow(X)
   mu = n^2 * rho * ((1 - a) / a)
   
-  df_path = file.path(result_dir, df)
-  dir.create(df_path, showWarnings = FALSE, recursive = TRUE)
+  save_path = file.path(result_dir, df)
+  dir.create(save_path, showWarnings = FALSE, recursive = TRUE)
   
   for (gamma in gamma_grid) {
     for (lambda in lambda_grid) {
       
       cat( "dataset:", df, "| lambda:", lambda, "| gamma:", gamma, "\n")
-      
-      save_path = file.path(df_path, paste0("gamma_", gamma), paste0("lambda_", lambda))
-      
-      dir.create(save_path, showWarnings = FALSE, recursive = TRUE)
       
       res = run_admm(
         X = X,
