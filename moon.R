@@ -19,10 +19,7 @@ y1 = y1 + rnorm(n, 0, sd_noise)
 x2 = x2 + rnorm(n, 0, sd_noise)
 y2 = y2 + rnorm(n, 0, sd_noise)
 
-X = rbind(
-  cbind(x1, y1),
-  cbind(x2, y2)
-)
+X = rbind(cbind(x1, y1), cbind(x2, y2))
 
 colnames(X) = c("x", "y")
 

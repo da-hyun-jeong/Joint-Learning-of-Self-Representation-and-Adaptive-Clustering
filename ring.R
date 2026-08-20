@@ -23,10 +23,7 @@ X = cbind(X, z)
 
 colnames(X) = c("x", "y", "z")
 
-y = c(
-  rep(1, n_each),
-  rep(2, n_each)
-)
+y = c(rep(1, n_each), rep(2, n_each))
 
 saveRDS(X, file = file.path(root_dir, "ring.Rds"))
 saveRDS(y, file = file.path(root_dir, "ring.true.Rds"))

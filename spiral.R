@@ -51,11 +51,7 @@ M3 = cbind(x3, y3, z_path)
 X = rbind(M1, M2, M3)
 colnames(X) = c("x", "y", "z")
 
-y = c(
-  rep(1, n_per_curve),
-  rep(2, n_per_curve),
-  rep(3, n_per_curve)
-)
+y = c(rep(1, n_per_curve), rep(2, n_per_curve), rep(3, n_per_curve))
 
 saveRDS(X, file = file.path(root_dir, "spiral.Rds"))
 saveRDS(y, file = file.path(root_dir, "spiral_true.Rds"))
