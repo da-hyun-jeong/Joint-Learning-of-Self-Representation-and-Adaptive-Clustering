@@ -1,7 +1,7 @@
 
-frob_norm <- function(A) sqrt(sum(A * A))
+frob_norm = function(A) sqrt(sum(A * A))
 
-init_state <- function(X) {
+init_state = function(X) {
   n = nrow(X)
   p = ncol(X)
   
@@ -52,7 +52,7 @@ init_state <- function(X) {
   st
 }
 
-project_to_simplex <- function(y) {
+project_to_simplex = function(y) {
   u = sort(y, decreasing = TRUE)
   s = cumsum(u)
   idx = seq_along(u)
@@ -61,12 +61,12 @@ project_to_simplex <- function(y) {
   pmax(y + theta, 0)
 }
 
-update_Z <- function(st) {
+update_Z = function(st) {
   st$Z = st$rho / (2 * st$gamma + 3 * st$rho) * (0.5 * (st$Z1 + t(st$Z2)) + st$Z3 + st$Z4 - st$E1 - st$E4 - st$E9 + st$Psi1 + st$Psi4 + st$Psi9)
   st
 }
 
-update_Z1 <- function(st) {
+update_Z1 = function(st) {
   n = nrow(st$Z1)
   Z1_tilde = (4 / 5) * (0.5 * st$Z + st$Z2 - 0.25 * t(st$Z2) + 0.5 * st$E1 + st$E2 - 0.5 * st$Psi1 - st$Psi2)
   Z1_new = matrix(0, n, n)
@@ -79,7 +79,7 @@ update_Z1 <- function(st) {
   st
 }
 
-update_Z2 <- function(st) {
+update_Z2 = function(st) {
   n = nrow(st$Z2)
   Z2_tilde = (4 / 5) * (st$Z1 - 0.25 * t(st$Z1) + 0.5 * t(st$Z) + 0.5 * t(st$E1) - st$E2 - 0.5 * t(st$Psi1) + st$Psi2)
   Z2_new = matrix(0, n, n)
@@ -92,13 +92,13 @@ update_Z2 <- function(st) {
   st
 }
 
-update_Z3 <- function(st) {
+update_Z3 = function(st) {
   n = nrow(st$Z3)
   st$Z3 = ((st$U + st$E3 - st$Psi3) %*% t(st$U1) + st$Z + st$E4 - st$Psi4) %*% solve(st$U1 %*% t(st$U1) + diag(n))
   st
 }
 
-update_Z4 <- function(st) {
+update_Z4 = function(st) {
   L = nrow(st$edges)
   Z4_new = st$Z + st$E9 - st$Psi9
   
@@ -117,18 +117,18 @@ update_Z4 <- function(st) {
   st
 }
 
-update_U <- function(st) {
+update_U = function(st) {
   st$U = (st$X + st$rho * (st$Z3 %*% st$U1 + st$U1 + st$U2 + st$U3 - st$E3 - st$E5 - st$E7 - st$E8 + st$Psi3 + st$Psi5 + st$Psi7 + st$Psi8)) / (1 + 4 * st$rho)
   st
 }
 
-update_U1 <- function(st) {
+update_U1 = function(st) {
   n = nrow(st$U1)
   st$U1 = solve(t(st$Z3) %*% st$Z3 + diag(n), t(st$Z3) %*% (st$U + st$E3 - st$Psi3) + st$U + st$E5 - st$Psi5)
   st
 }
 
-update_U2 <- function(st) {
+update_U2 = function(st) {
   n = nrow(st$U2)
   U2_new = matrix(0, n, ncol(st$U2))
   
@@ -159,7 +159,7 @@ update_U2 <- function(st) {
   st
 }
 
-update_U3 <- function(st) {
+update_U3 = function(st) {
   n = nrow(st$U3)
   U3_new = matrix(0, n, ncol(st$U3))
   
@@ -190,7 +190,7 @@ update_U3 <- function(st) {
   st
 }
 
-update_A <- function(st) {
+update_A = function(st) {
   L = nrow(st$edges)
   A_new = matrix(0, L, ncol(st$A))
   
@@ -209,32 +209,32 @@ update_A <- function(st) {
   st
 }
 
-update_E1 <- function(st) {
+update_E1 = function(st) {
   st$E1 = st$rho / (st$mu + st$rho) * (0.5 * (st$Z1 + t(st$Z2)) - st$Z + st$Psi1)
   st
 }
 
-update_E2 <- function(st) {
+update_E2 = function(st) {
   st$E2 = st$rho / (st$mu + st$rho) * (st$Z1 - st$Z2 + st$Psi2)
   st
 }
 
-update_E3 <- function(st) {
+update_E3 = function(st) {
   st$E3 = st$rho / (st$mu + st$rho) * (st$Z3 %*% st$U1 - st$U + st$Psi3)
   st
 }
 
-update_E4 <- function(st) {
+update_E4 = function(st) {
   st$E4 = st$rho / (st$mu + st$rho) * (st$Z3 - st$Z + st$Psi4)
   st
 }
 
-update_E5 <- function(st) {
+update_E5 = function(st) {
   st$E5 = st$rho / (st$mu + st$rho) * (st$U1 - st$U + st$Psi5)
   st
 }
 
-update_E6 <- function(st) {
+update_E6 = function(st) {
   L = nrow(st$edges)
   E6_new = matrix(0, L, ncol(st$E6))
   
@@ -251,22 +251,22 @@ update_E6 <- function(st) {
   st
 }
 
-update_E7 <- function(st) {
+update_E7 = function(st) {
   st$E7 = st$rho / (st$mu + st$rho) * (st$U2 - st$U + st$Psi7)
   st
 }
 
-update_E8 <- function(st) {
+update_E8 = function(st) {
   st$E8 = st$rho / (st$mu + st$rho) * (st$U3 - st$U + st$Psi8)
   st
 }
 
-update_E9 <- function(st) {
+update_E9 = function(st) {
   st$E9 = st$rho / (st$mu + st$rho) * (st$Z4 - st$Z + st$Psi9)
   st
 }
 
-update_duals <- function(st) {
+update_duals = function(st) {
   L = nrow(st$edges)
   Psi6_new = st$Psi6
   
@@ -288,7 +288,7 @@ update_duals <- function(st) {
   st
 }
 
-stopping_criteria <- function(st, st_prev) {
+stopping_criteria = function(st, st_prev) {
   n = nrow(st$Z)
   p = ncol(st$U)
   L = nrow(st$edges)
@@ -404,7 +404,7 @@ stopping_criteria <- function(st, st_prev) {
   )
 }
 
-run_admm <- function(X, rho, mu, lambda, gamma,
+run_admm = function(X, rho, mu, lambda, gamma,
                     max_iter = 2000, tol = 1e-6,
                     save_path = getwd(), scen_nm = 'admm',
                     warm_start = NULL, save_every = 300) {
